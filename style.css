@@ -118,6 +118,8 @@ p{
 .tile{
   --col: 0;
   --row: 3;
+  --background-lightness: 89%;
+  --color-lightness: 43%;
 
   position: absolute;
   width: var(--cell-size);
@@ -130,7 +132,8 @@ p{
   align-items: center;
   font-size: 55px;
   font-weight: 700;
-  background-color: #eee4da;
+  color: hsla(30, 8%, var(--color-lightness), 1);
+  background-color: hsla(30, 37%, var(--background-lightness), 1);
   animation: show 200ms ease-in-out;
   transition: 100ms ease-in-out;
 }
