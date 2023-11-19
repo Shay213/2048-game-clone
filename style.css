@@ -101,3 +101,8 @@ p{
   background: rgba(238, 228, 218, 0.35);
   border-radius: 4px;
 }
+
+#footer{
+  text-align: justify;
+  line-height: 1.5;
+}
