@@ -21,6 +21,8 @@ p{
   width: 500px;
 }
 
+/* HEADING START */
+
 #heading{
   display: flex;
   justify-content: space-between;
@@ -87,20 +89,62 @@ p{
   font-weight: 700;
 }
 
+/* GAME START */
+
 #game{
+  --grid-size: 4;
+  --cell-size: 105px;
+  --cell-gap: 16px;
+  --radius: 4px;
+
   display: grid;
-  grid-template-columns: repeat(4, 105fr);
-  grid-template-rows: repeat(4, 105px);
-  gap: 16px;
-  padding: 16px;
+  grid-template-columns: repeat(var(--grid-size), var(--cell-size));
+  grid-template-rows: repeat(var(--grid-size), var(--cell-size));
+  gap: var(--cell-gap);
+  padding: var(--cell-gap);
   background: #bbada0;
-  border-radius: 4px;
+  border-radius: var(--radius);
+  position: relative;
 }
 
 .cell{
   background: rgba(238, 228, 218, 0.35);
-  border-radius: 4px;
+  border-radius: var(--radius);
+  -webkit-box-shadow: 0px 0px 6px -3px rgba(66, 68, 90, 1);
+  -moz-box-shadow: 0px 0px 6px -3px rgba(66, 68, 90, 1);
+  box-shadow: 0px 0px 6px -3px rgba(66, 68, 90, 1);
 }
+
+.tile{
+  --col: 0;
+  --row: 3;
+
+  position: absolute;
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border-radius: var(--radius);
+  top: calc((var(--row) + 1) * var(--cell-gap) + var(--row) * var(--cell-size));
+  left: calc((var(--col) + 1) * var(--cell-gap) + var(--col) * var(--cell-size));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 55px;
+  font-weight: 700;
+  background-color: #eee4da;
+  animation: show 200ms ease-in-out;
+  transition: 100ms ease-in-out;
+}
+
+@keyframes show {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1)
+  }
+}
+
+/* FOOTER START */
 
 #footer{
   text-align: justify;
