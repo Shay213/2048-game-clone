@@ -92,8 +92,6 @@ p{
 /* GAME START */
 
 #game{
-  --grid-size: 4;
-  --cell-size: 105px;
   --cell-gap: 16px;
   --radius: 4px;
 
