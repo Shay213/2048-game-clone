@@ -20,10 +20,12 @@ function handleKeyDown(e){
       grid.createTileInRandomCell()
       break
     case 'ArrowLeft':
-      //grid.createTileInRandomCell()
+      moveTiles(grid.cellsByRow)
+      grid.createTileInRandomCell()
       break
     case 'ArrowRight':
-      //grid.createTileInRandomCell()
+      moveTiles(grid.cellsByRow.map(row => row.reverse()))
+      grid.createTileInRandomCell()
       break
     default:
       keyDownOnce()
