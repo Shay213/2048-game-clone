@@ -1,5 +1,5 @@
 import Cell from './Cell.js'
-
+import Tile from './Tile.js'
 export default class Grid{
   #cells
   #grid
@@ -18,6 +18,18 @@ export default class Grid{
     this.#grid.style.setProperty('--cell-gap', `${this.#cellGap}px`)
 
     this.#cells = this.#createCells()
+  }
+
+  get #emptyCells(){
+    return this.#cells.filter(cell => cell.tile === null)
+  }
+
+  createTileInRandomCell(){
+    this.#emptyCells[
+      Math.floor(Math.random() * this.#emptyCells.length)
+    ].tile = new Tile(
+      this.#grid
+    )
   }
 
   #createCells(){

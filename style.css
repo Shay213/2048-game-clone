@@ -114,8 +114,6 @@ p{
 }
 
 .tile{
-  --col: 0;
-  --row: 3;
   --background-lightness: 89%;
   --color-lightness: 43%;
 
