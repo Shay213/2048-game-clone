@@ -24,6 +24,26 @@ export default class Grid{
     return this.#cells.filter(cell => cell.tile === null)
   }
 
+  get grid(){
+    return this.#grid
+  }
+
+  get cellsByCol(){
+    return this.#cells.reduce((prev, curr) => {
+      prev[curr.col] = prev[curr.col] ?? []
+      prev[curr.col][curr.row] = curr
+      return prev
+    }, [])
+  }
+
+  get cellsByRow(){
+    return this.#cells.reduce((prev, curr) => {
+      prev[curr.row] = prev[curr.row] ?? []
+      prev[curr.row][curr.col] = curr
+      return prev
+    }, [])
+  }
+
   createTileInRandomCell(){
     this.#emptyCells[
       Math.floor(Math.random() * this.#emptyCells.length)

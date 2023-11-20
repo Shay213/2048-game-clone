@@ -114,9 +114,6 @@ p{
 }
 
 .tile{
-  --background-lightness: 89%;
-  --color-lightness: 43%;
-
   position: absolute;
   width: var(--cell-size);
   height: var(--cell-size);
