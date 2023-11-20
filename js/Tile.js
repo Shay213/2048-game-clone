@@ -39,4 +39,8 @@ export default class Tile{
     this.#col = value
     this.#tileElement.style.setProperty('--col', value)
   }
+
+  remove(){
+    this.#tileElement.remove()
+  }
 }

@@ -29,6 +29,8 @@ function handleKeyDown(e){
       return
   }
 
+  grid.cells.forEach(cell => cell.mergeTiles())
+
   keyDownOnce()
 }
 

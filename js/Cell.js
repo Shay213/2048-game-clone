@@ -44,6 +44,14 @@ export default class Cell{
     this.#tile.col = this.#col
   }
 
+  mergeTiles(){
+    if(!this.#mergeTile || !this.#tile) return
+
+    this.#tile.value += this.#mergeTile.value
+    this.#mergeTile.remove()
+    this.#mergeTile = null
+  }
+
   canAccept(tile){
     return (
       this.tile === null ||

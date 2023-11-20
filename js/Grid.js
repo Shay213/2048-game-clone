@@ -24,6 +24,10 @@ export default class Grid{
     return this.#cells.filter(cell => cell.tile === null)
   }
 
+  get cells(){
+    return this.#cells
+  }
+
   get grid(){
     return this.#grid
   }
