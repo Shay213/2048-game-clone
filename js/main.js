@@ -9,23 +9,19 @@ grid.createTileInRandomCell()
 
 const keyDownOnce = () => window.addEventListener('keydown', handleKeyDown, {once: true})
 
-function handleKeyDown(e){
+async function handleKeyDown(e){
   switch(e.key){
     case 'ArrowUp':
-      moveTiles(grid.cellsByCol)
-      grid.createTileInRandomCell()
+      await moveTiles(grid.cellsByCol)
       break
     case 'ArrowDown':
-      moveTiles(grid.cellsByCol.map(col => col.reverse()))
-      grid.createTileInRandomCell()
+      await moveTiles(grid.cellsByCol.map(col => col.reverse()))
       break
     case 'ArrowLeft':
-      moveTiles(grid.cellsByRow)
-      grid.createTileInRandomCell()
+      await moveTiles(grid.cellsByRow)
       break
     case 'ArrowRight':
-      moveTiles(grid.cellsByRow.map(row => row.reverse()))
-      grid.createTileInRandomCell()
+      await moveTiles(grid.cellsByRow.map(row => row.reverse()))
       break
     default:
       keyDownOnce()
@@ -33,6 +29,7 @@ function handleKeyDown(e){
   }
 
   grid.cells.forEach(cell => cell.mergeTiles())
+  grid.createTileInRandomCell()
 
   keyDownOnce()
 }
