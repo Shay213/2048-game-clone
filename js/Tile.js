@@ -22,12 +22,16 @@ export default class Tile{
     )
     this.#tileElement.style.setProperty(
       '--color-lightness',
-      `${backgroundLightness <= 50 ? 60 : 40}%`
+      `${backgroundLightness <= 50 ? 70 : 40}%`
     )
   }
 
   get value(){
     return this.#value
+  }
+
+  get tileElement(){
+    return this.#tileElement
   }
 
   set row(value){

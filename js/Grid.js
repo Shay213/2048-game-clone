@@ -49,11 +49,13 @@ export default class Grid{
   }
 
   createTileInRandomCell(){
+    const newTile = new Tile(this.#grid)
     this.#emptyCells[
       Math.floor(Math.random() * this.#emptyCells.length)
-    ].tile = new Tile(
-      this.#grid
-    )
+    ].tile = newTile
+    return new Promise(resolve => {
+      newTile.tileElement.addEventListener('animationend', resolve, {once: true})
+    })
   }
 
   #createCells(){
