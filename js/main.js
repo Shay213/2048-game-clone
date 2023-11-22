@@ -1,12 +1,11 @@
-import Grid from "./Grid.js"
+
 import moveTiles from './moveTiles.js'
 import canMoveTiles from "./canMoveTiles.js"
+import startGame from './startGame.js'
 
-const gridElement = document.getElementById('game')
+const newGameBtn = document.getElementById('new-game')
 
-const grid = new Grid(gridElement)
-grid.createTileInRandomCell()
-grid.createTileInRandomCell()
+let grid = startGame()
 
 const keyDownOnce = () => window.addEventListener('keydown', handleKeyDown, {once: true})
 
@@ -60,6 +59,34 @@ async function handleKeyDown(e){
 
   keyDownOnce()
 }
+
+newGameBtn.addEventListener('click', async () => {
+  try {
+    await new Promise((resolve, reject) => {
+      const modal = document.createElement('div')
+      modal.classList.add('modal')
+      modal.innerHTML = `
+          <div>Are you sure you want to start new game?</div>
+          <button id="okButton">OK</button>
+          <button id="cancelButton">Cancel</button>
+      `;
+      document.body.appendChild(modal);
+      document.getElementById('okButton').addEventListener('click', () => {
+        document.body.removeChild(modal);
+        resolve();
+      });
+  
+      document.getElementById('cancelButton').addEventListener('click', () => {
+        document.body.removeChild(modal);
+        reject();
+      });
+    })
+    grid.remove()
+    grid = startGame()
+  } catch (error) {
+    // nothing
+  }
+})
 
 keyDownOnce()
 

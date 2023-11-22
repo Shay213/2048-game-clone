@@ -58,6 +58,10 @@ export default class Grid{
     })
   }
 
+  remove(){
+    this.#grid.remove()
+  }
+
   #createCells(){
     const cells = []
 
